@@ -22,21 +22,6 @@ goto ${win_version}
 iseq ${win_arch} x64 && set win_arch x86 || set win_arch x64
 goto windows
 
-:url_set
-echo Set the HTTP URL of an extracted Windows ISO without the trailing slash:
-echo e.g. http://www.mydomain.com/windows
-echo
-echo -n URL: ${} && read win_base_url
-echo
-echo netboot.xyz will attempt to load the following files:
-echo http://192.168.11.125:8888/x64/bootmgr
-echo http://192.168.11.125:8888/x64/boot/bcd
-echo http://192.168.11.125:8888/x64/boot/boot.sdi
-echo http://192.168.11.125:8888/x64/boot.wim
-echo
-prompt Press any key to return to Windows Menu...
-goto windows
-
 :win_install
 isset http://192.168.11.125:8888/x64 && goto boot || echo URL not set... && goto url_set
 
