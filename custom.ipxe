@@ -29,10 +29,10 @@ echo
 echo -n URL: ${} && read win_base_url
 echo
 echo netboot.xyz will attempt to load the following files:
-echo ${http://192.168.11.125:8888}/${x64}/bootmgr
-echo ${http://192.168.11.125:8888}/${x64}/boot/bcd
-echo ${http://192.168.11.125:8888}/${x64}/boot/boot.sdi
-echo ${http://192.168.11.125:8888}/${x64}/boot.wim
+echo http://192.168.11.125:8888/x64/bootmgr
+echo http://192.168.11.125:8888/x64/boot/bcd
+echo http://192.168.11.125:8888/x64/boot/boot.sdi
+echo http://192.168.11.125:8888/x64/boot.wim
 echo
 prompt Press any key to return to Windows Menu...
 goto windows
@@ -41,11 +41,11 @@ goto windows
 isset ${win_base_url} && goto boot || echo URL not set... && goto url_set
 
 :boot
-kernel http://${boot_domain}/wimboot
-initrd ${http://192.168.11.125:8888}/${x64}/bootmgr bootmgr
-initrd ${http://192.168.11.125:8888}/${x64}/boot/bcd bcd
-initrd ${http://192.168.11.125:8888}/${x64}/boot/boot.sdi boot.sdi
-initrd ${http://192.168.11.125:8888}/${x64}/sources/boot.wim boot.wim
+kernel http://192.168.11.125:8888/x64/wimboot
+initrd http://192.168.11.125:8888/x64/bootmgr bootmgr
+initrd http://192.168.11.125:8888/x64/boot/bcd bcd
+initrd http://192.168.11.125:8888/x64/boot/boot.sdi boot.sdi
+initrd http://192.168.11.125:8888/x64/sources/boot.wim boot.wim
 md5sum wimboot
 iseq ${img_sigs_enabled} true && goto verify_sigs || goto skip_sigs
 :verify_sigs
