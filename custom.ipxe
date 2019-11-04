@@ -38,7 +38,7 @@ prompt Press any key to return to Windows Menu...
 goto windows
 
 :win_install
-isset ${win_base_url} && goto boot || echo URL not set... && goto url_set
+isset http://192.168.11.125:8888/x64 && goto boot || echo URL not set... && goto url_set
 
 :boot
 kernel http://192.168.11.125:8888/x64/wimboot
